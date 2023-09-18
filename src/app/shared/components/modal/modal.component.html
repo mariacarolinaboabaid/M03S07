@@ -1,0 +1,47 @@
+<div class="modal-header">
+    <button type="button" class="btn-close" aria-label="Close" (click)="fecharModal()"></button>
+</div>
+
+<!-- Formulário -->
+<div class="modal-body">
+    <form [formGroup]="formulario" #form="ngForm">
+        <!-- Nome  -->
+        <div class="form-floating mb-3" [hidden]="estadoNameField">
+            <input type="text" class="form-control" formControlName="nome" name="nome" id="nome">
+            <label for="nome">Nome</label>
+        </div>
+
+        <!-- Email -->
+        <div class="form-floating mb-3" [hidden]="estadoEmailField">
+            <input type="text" class="form-control" formControlName="email" name="email" id="email">
+            <label for="email">Email</label>
+            <span *ngIf="">
+
+            </span>
+        </div>
+
+        <!-- Data de nascimento -->
+        <div class="form-floating mb-3" [hidden]="estadoDataNascimentoField">
+            <input type="date" name="dataNascimento" id="dataNascimento" class="form-control"
+                formControlName="dataNascimento">
+            <label for="dataNascimento">Data de nascimento</label>
+        </div>
+
+        <!-- Texto confirmação exclusão -->
+        <div class="form-floating mb-3" [hidden]="textoConfirmacaoExclusao">
+            <p>Você tem certeza que deseja excluir esse usuário?</p>
+        </div>
+
+        <!-- Botões -->
+        <div class="modal-footer">
+            <button type="submit" (click)="atualizar()" class="btn btn-primary" [disabled]="formulario.invalid"
+                [hidden]="estadoBtnAtualizar">
+                Atualizar
+            </button>
+
+            <button type="submit" (click)="deletar()" class="btn btn-primary" [disabled]="formulario.invalid" [hidden]="estadoBtnDelete">
+                Remover
+            </button>
+        </div>
+    </form>
+</div>
